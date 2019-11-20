@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+  http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+  http://www.springframework.org/schema/jdbc 
+  http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd">
+
+	<!-- connect to database  -->
+	<!-- <bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.ibm.db2.jcc.DB2Driver" />
+		<property name="url" value="jdbc:db2://172.16.134.76:50000/LWSCOMDB" />
+		<property name="username" value="wcsproln" />
+		<property name="password" value="@pr04apr" />
+	</bean> --> 
+	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.ibm.db2.jcc.DB2Driver" />
+		<property name="url" value="jdbc:db2://172.16.97.60:60020/COMPRDB1" />
+		<property name="username" value="wcsproln" />
+		<property name="password" value="wcspr0ln" />
+	</bean>
+	<bean id="placeholderProperties"
+	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<property name="location" value="classpath:batch.properties" />
+	<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+	<property name="ignoreUnresolvablePlaceholders" value="true" />
+	<property name="order" value="1" />
+</bean>
+	
+	<bean id="transactionManager"
+		class="org.springframework.batch.support.transaction.ResourcelessTransactionManager" />
+
+</beans>
